@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DICE（Githubチャレンジ)</title>
+    <!-- Bootstrap(CSS) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap(JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Bootstrap(アイコン) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <!-- jQuery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script>
+        $(function () {
+            $('#dice').on('click', function() {
+                let counter = 0
+                const timerId = setInterval(function dice() {
+                    let min = Math.ceil(1);
+                    let max = Math.floor(6);
+                    let num =  Math.floor(Math.random() * (max - min) + min);
+                    let res = '<i class="bi bi-dice-' + num + '"></i>'
+                    $('#dice').html(res)
+                    if(++counter > 30){ 
+                        clearInterval(timerId)
+                    }
+                },20);
+
+            });
+        });
+    </script>
+    <style>
+        body {
+            text-align: center;
+            background-color: #fff;
+            color: #000;
+        }
+        #dice{
+            font-size: 100px;
+        }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #000;
+                color: #fff;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>www.yutohonoki.site（Githubチャレンジ)のさいころ</h1>
+        <div id="dice"><i class="bi bi-dice-1"></i></div>
+        <p>クリックしてさいころをふろう</p>
+    </div>
+</body>
